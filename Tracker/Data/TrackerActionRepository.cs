@@ -20,7 +20,7 @@ namespace Tracker.Data
         public TrackerAction GetByDate(string date)
         {
 
-            return (TrackerAction)_context.Trackers
+            return _context.Trackers.ToList();
         }
     }
 }

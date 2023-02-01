@@ -56,8 +56,8 @@ namespace Tracker.Controllers
         {
             try
             {
-                var tracker = _repository.GetByDate(date);
-                return (IActionResult)tracker;
+                List<TrackerAction> tracker = _repository.GetByDate(date);
+                return tracker;
 
             }
             catch (Exception ex)
