@@ -17,5 +17,10 @@ namespace Tracker.Data
             _context.SaveChanges();
             return trackerAction;
         }
+        public TrackerAction GetByDate(string date)
+        {
+
+            return (TrackerAction)_context.Trackers.Where(tracker => tracker.date == DateOnly.Parse(date));
+        }
     }
 }

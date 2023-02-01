@@ -32,7 +32,9 @@ namespace Tracker.Controllers
                 var tracker = new TrackerAction
                 {
                     type = dto.type,
-                    user_id = userId,
+                    userId = userId,
+                    date = DateOnly.FromDateTime(DateTime.Now),
+                    time = TimeOnly.FromDateTime(DateTime.Now)
                 };
 
                 if (tracker == null)
@@ -42,6 +44,21 @@ namespace Tracker.Controllers
 
 
                 return Created("Success", _repository.Create(tracker));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet]
+        [Route("/{date}")]
+        public IActionResult GetSelectDay(string date)
+        {
+            try
+            {
+                var tracker = _repository.GetByDate(date);
+                return (IActionResult)tracker;
+
             }
             catch (Exception ex)
             {

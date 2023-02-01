@@ -25,25 +25,22 @@ namespace Tracker.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("Userid")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("date")
+                    b.Property<DateOnly>("date")
                         .HasColumnType("date");
 
-                    b.Property<DateTime>("time")
-                        .HasColumnType("date");
+                    b.Property<TimeOnly>("time")
+                        .HasColumnType("time");
 
                     b.Property<string>("type")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("user_id")
+                    b.Property<int>("userId")
                         .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.HasIndex("Userid");
+                    b.HasIndex("userId");
 
                     b.ToTable("Trackers");
                 });
@@ -76,13 +73,16 @@ namespace Tracker.Migrations
 
             modelBuilder.Entity("Tracker.Models.TrackerAction", b =>
                 {
-                    b.HasOne("Tracker.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("Userid")
+                    b.HasOne("Tracker.Models.User", null)
+                        .WithMany("trackers")
+                        .HasForeignKey("userId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.Navigation("User");
+            modelBuilder.Entity("Tracker.Models.User", b =>
+                {
+                    b.Navigation("trackers");
                 });
 #pragma warning restore 612, 618
         }
