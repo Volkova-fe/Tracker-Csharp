@@ -52,18 +52,10 @@ namespace Tracker.Controllers
         }
         [HttpGet]
         [Route("{date}")]
-        public IActionResult GetSelectDay(string date)
+        public IEnumerable<TrackerAction> GetSelectDay(DateOnly date)
         {
-            try
-            {
-                List<TrackerAction> tracker = _repository.GetByDate(date);
-                return tracker;
+            return _repository.GetByDate(date);
 
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
         }
     }
 }

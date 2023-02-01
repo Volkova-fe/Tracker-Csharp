@@ -17,10 +17,10 @@ namespace Tracker.Data
             _context.SaveChanges();
             return trackerAction;
         }
-        public TrackerAction GetByDate(string date)
+        public IEnumerable<TrackerAction> GetByDate(DateOnly date)
         {
 
-            return _context.Trackers.ToList();
+            return _context.Trackers.Where(tracker => tracker.date == date).ToList();
         }
     }
 }
