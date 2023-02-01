@@ -11,8 +11,8 @@ using Tracker.Data;
 namespace Tracker.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20230201033921_initial")]
-    partial class initial
+    [Migration("20230201095129_intial")]
+    partial class intial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,11 +28,8 @@ namespace Tracker.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("date")
-                        .HasColumnType("date");
-
-                    b.Property<TimeOnly>("time")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("type")
                         .IsRequired()

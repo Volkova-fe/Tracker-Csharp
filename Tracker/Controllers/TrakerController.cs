@@ -33,8 +33,7 @@ namespace Tracker.Controllers
                 {
                     type = dto.type,
                     userId = userId,
-                    date = DateOnly.FromDateTime(DateTime.Now),
-                    time = TimeOnly.FromDateTime(DateTime.Now)
+                    date = DateTime.Now,
                 };
 
                 if (tracker == null)
@@ -52,9 +51,17 @@ namespace Tracker.Controllers
         }
         [HttpGet]
         [Route("{date}")]
-        public IEnumerable<TrackerAction> GetSelectDay(DateOnly date)
+        public IEnumerable<TrackerAction> GetSelectDay(DateTime date)
         {
             return _repository.GetByDate(date);
+
+        }
+
+        [HttpGet]
+        [Route("{from}/{to}")]
+        public IEnumerable<TrackerAction> GetRangeDay(DateTime from, DateTime to)
+        {
+            return _repository.GetByDateFromTo(from, to);
 
         }
     }

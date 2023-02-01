@@ -9,9 +9,6 @@ namespace Tracker.Models
         public string type { get; set; } = string.Empty;
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy'/'MM'/'dd}", ApplyFormatInEditMode = true)]
-        public DateOnly date { get; set; }
-        [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
-        public TimeOnly time { get; set; }
+        public DateTime date { get; set; }
     }
 }

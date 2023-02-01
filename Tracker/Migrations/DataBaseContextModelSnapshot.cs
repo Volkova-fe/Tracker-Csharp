@@ -25,11 +25,8 @@ namespace Tracker.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateOnly>("date")
-                        .HasColumnType("date");
-
-                    b.Property<TimeOnly>("time")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("date")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("type")
                         .IsRequired()

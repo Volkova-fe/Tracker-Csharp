@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace Tracker.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class intial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -39,8 +39,7 @@ namespace Tracker.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     userId = table.Column<int>(type: "int", nullable: false),
                     type = table.Column<string>(type: "longtext", nullable: false),
-                    date = table.Column<DateOnly>(type: "date", nullable: false),
-                    time = table.Column<TimeOnly>(type: "time", nullable: false)
+                    date = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
