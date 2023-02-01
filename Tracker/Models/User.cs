@@ -11,5 +11,6 @@ namespace Tracker.Models
         [JsonIgnore]
         public string password { get; set; }
         public string name { get; set; }
+        public List<TrackerAction> trackers { get; set; } = new List<TrackerAction> { };
     }
 }

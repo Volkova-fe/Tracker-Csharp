@@ -7,7 +7,7 @@ using MySql.EntityFrameworkCore.Metadata;
 namespace Tracker.Migrations
 {
     /// <inheritdoc />
-    public partial class iniial : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -37,18 +37,17 @@ namespace Tracker.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
-                    userid = table.Column<int>(name: "user_id", type: "int", nullable: false),
-                    Userid = table.Column<int>(type: "int", nullable: false),
+                    userId = table.Column<int>(type: "int", nullable: false),
                     type = table.Column<string>(type: "longtext", nullable: false),
-                    date = table.Column<DateTime>(type: "date", nullable: false),
-                    time = table.Column<DateTime>(type: "date", nullable: false)
+                    date = table.Column<DateOnly>(type: "date", nullable: false),
+                    time = table.Column<TimeOnly>(type: "time", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Trackers", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Trackers_user_Userid",
-                        column: x => x.Userid,
+                        name: "FK_Trackers_user_userId",
+                        column: x => x.userId,
                         principalTable: "user",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -56,9 +55,9 @@ namespace Tracker.Migrations
                 .Annotation("MySQL:Charset", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Trackers_Userid",
+                name: "IX_Trackers_userId",
                 table: "Trackers",
-                column: "Userid");
+                column: "userId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_user_email",
